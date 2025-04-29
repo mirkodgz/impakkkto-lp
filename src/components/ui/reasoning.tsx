@@ -9,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Markdown } from "./markdown";
 import { useTextStream, type Mode } from "./response-stream";
 
 type ReasoningContextType = {
@@ -189,7 +188,7 @@ function ReasoningResponse({
         opacity: isOpen ? 1 : 0,
       }}
     >
-      <Markdown>{displayedText}</Markdown>
+      <div className="whitespace-pre-wrap">{displayedText}</div>
     </div>
   );
 }
