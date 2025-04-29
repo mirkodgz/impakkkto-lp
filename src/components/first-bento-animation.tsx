@@ -2,25 +2,10 @@
 "use client";
 
 import { Icons } from "@/components/icons";
-import {
-  Reasoning,
-  ReasoningContent,
-  ReasoningResponse,
-} from "@/components/ui/reasoning";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-export function ReasoningBasic() {
-  const reasoningText = `Based on your calendar patterns and preferences, I recommend scheduling the team meeting for Tuesday at 2pm. This time slot has historically had the highest attendance rate, and it avoids conflicts with other recurring meetings.`;
-
-  return (
-    <Reasoning>
-      <ReasoningContent className="">
-        <ReasoningResponse text={reasoningText} />
-      </ReasoningContent>
-    </Reasoning>
-  );
-}
+const responseText = "Based on your calendar patterns and preferences, I recommend scheduling the team meeting for Tuesday at 2pm. This time slot has historically had the highest attendance rate, and it avoids conflicts with other recurring meetings.";
 
 export function FirstBentoAnimation() {
   const ref = useRef(null);
@@ -133,7 +118,7 @@ export function FirstBentoAnimation() {
                     ease: "easeOut",
                   }}
                 >
-                  <ReasoningBasic />
+                  <p className="text-sm text-muted-foreground">{responseText}</p>
                 </motion.div>
               )}
             </AnimatePresence>
