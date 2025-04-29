@@ -1,4 +1,3 @@
-import { FirstBentoAnimation } from "@/components/first-bento-animation";
 import { FourthBentoAnimation } from "@/components/fourth-bento-animation";
 import { SecondBentoAnimation } from "@/components/second-bento-animation";
 import { ThirdBentoAnimation } from "@/components/third-bento-animation";
@@ -331,7 +330,15 @@ export const siteConfig = {
     items: [
       {
         id: 1,
-        content: <FirstBentoAnimation />,
+        content: (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="max-w-md mx-auto p-4 bg-accent rounded-lg shadow-lg">
+              <p className="text-sm text-muted-foreground">
+                Based on your calendar patterns and preferences, I recommend scheduling the team meeting for Tuesday at 2pm. This time slot has historically had the highest attendance rate, and it avoids conflicts with other recurring meetings.
+              </p>
+            </div>
+          </div>
+        ),
         title: "Real-time AI Collaboration",
         description:
           "Experience real-time assistance. Ask your AI Agent to coordinate tasks, answer questions, and maintain team alignment.",
