@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-import { codeToHtml } from "shiki";
+import * as shiki from 'shiki';
 
 export type CodeBlockProps = {
   children?: React.ReactNode;
@@ -42,8 +42,21 @@ function CodeBlockCode({
 
   useEffect(() => {
     async function highlight() {
-      const html = await codeToHtml(code, { lang: language, theme });
-      setHighlightedHtml(html);
+      try {
+        const highlighter = await shiki.createHighlighter({
+          themes: [theme as shiki.BundledTheme],
+          langs: [language as shiki.BundledLanguage]
+        });
+        const html = await highlighter.codeToHtml(code, {
+          lang: language as shiki.BundledLanguage,
+          themes: [theme as shiki.BundledTheme]
+        });
+        setHighlightedHtml(html);
+      } catch (error) {
+        console.error('Error highlighting code:', error);
+        // Fallback to plain text if highlighting fails
+        setHighlightedHtml(`<pre><code>${code}</code></pre>`);
+      }
     }
     highlight();
   }, [code, language, theme]);
