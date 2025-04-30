@@ -3,6 +3,7 @@ import { SecondBentoAnimation } from "@/components/second-bento-animation";
 import { ThirdBentoAnimation } from "@/components/third-bento-animation";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Globe } from "@/components/ui/globe";
+import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
@@ -345,7 +346,20 @@ export const siteConfig = {
       },
       {
         id: 2,
-        content: <SecondBentoAnimation />,
+        content: (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="max-w-md mx-auto p-4 bg-accent rounded-lg shadow-lg">
+              <div className="flex items-center justify-center gap-4">
+                <Icons.logo className="size-8" />
+                <Icons.soc2 className="size-8" />
+                <Icons.logo className="size-8" />
+              </div>
+              <p className="text-sm text-muted-foreground mt-4 text-center">
+                Seamlessly connect and integrate with your favorite tools and services
+              </p>
+            </div>
+          </div>
+        ),
         title: "Seamless Integrations",
         description:
           "Unite your favorite tools for effortless connectivity. Boost productivity through interconnected workflows.",
